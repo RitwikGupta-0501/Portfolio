@@ -1,0 +1,6 @@
+{
+  "name": "3D Architecture Portfolio",
+  "description": "Interactive 3D portfolio featuring exploded architectural layers, WebGL layer inspection, data flow simulation, and responsive mobile views.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
