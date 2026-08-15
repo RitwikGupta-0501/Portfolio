@@ -3,14 +3,14 @@ import { EXPERIENCE_MANIFEST } from '../data/experience_manifest';
 
 export const ExecutionLog: React.FC = () => {
   return (
-    <section id="experience-log" className="py-24 px-6 md:px-12 max-w-6xl mx-auto">
+    <section id="experience-log" className="py-16 sm:py-20 scroll-mt-20 px-6 md:px-12 max-w-6xl mx-auto">
       {/* Section Header & Total Metric Badge */}
-      <div className="mb-16 border-b border-white/[0.06] pb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+      <div className="mb-12 border-b border-white/[0.06] pb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
           {/* Eyebrow in Tracked-Out Metallic Brass */}
-          <span className="text-[#C59458] text-xs tracking-[0.2em] uppercase font-medium font-mono block mb-2">
+          <div className="text-[#C59458] text-xs font-mono tracking-[0.2em] uppercase mb-2 font-medium">
             03 • CAREER TIMELINE
-          </span>
+          </div>
           {/* Title in Serif Font */}
           <h2 className="font-serif-display text-3xl sm:text-4xl lg:text-5xl text-[#EAEAEA] tracking-tight">
             Work Experience
@@ -28,7 +28,7 @@ export const ExecutionLog: React.FC = () => {
         {EXPERIENCE_MANIFEST.items.map((exp) => (
           <div
             key={exp.id}
-            className="border-b border-white/5 py-12 first:pt-0 last:border-b-0 flex flex-col md:flex-row gap-6 md:gap-12 group"
+            className="border-b border-white/5 py-9 sm:py-10 first:pt-0 last:border-b-0 flex flex-col md:flex-row gap-6 md:gap-12 group"
           >
             {/* Left Column (Timeline Metadata, ~25% width) */}
             <div className="w-full md:w-1/4 shrink-0 space-y-1">

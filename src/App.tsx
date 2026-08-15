@@ -9,6 +9,7 @@ import { ContactSection } from './components/ContactSection';
 import { PROJECTS_DATA } from './data/projectsData';
 import { Project } from './types';
 import { ArrowDown, Github, Mail, FileText } from 'lucide-react';
+import { navigateToSection, scrollToTop } from './utils/smoothScroll';
 
 export default function App() {
   const [activeProject, setActiveProject] = useState<Project | null>(null);
@@ -47,10 +48,7 @@ export default function App() {
   };
 
   const handleNavigateSection = (sectionId: string) => {
-    const el = document.getElementById(sectionId);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
+    navigateToSection(sectionId, 650, 80);
   };
 
   const handleSelectProject = (proj: Project) => {
@@ -71,8 +69,8 @@ export default function App() {
         onNavigateSection={handleNavigateSection}
       />
 
-      {/* HERO SECTION - Refined Serif Identity & Editorial Introduction */}
-      <section className="relative pt-24 pb-20 sm:pt-32 sm:pb-28 px-6 sm:px-8 max-w-4xl mx-auto flex flex-col items-start text-left">
+      {/* HERO SECTION - Dedicated Full Viewport Landing */}
+      <section className="relative min-h-[calc(100vh-4rem)] sm:min-h-[calc(100vh-5rem)] px-6 sm:px-8 max-w-4xl mx-auto flex flex-col justify-center items-start text-left py-12 sm:py-16">
         {/* The Eyebrow: Purely typographic, all-caps, wide letter spacing, bronze/brass accent (#C59458) */}
         <div className="text-xs font-sans uppercase font-medium tracking-[0.2em] text-[#C59458] mb-6">
           OPEN TO 6-MONTH INTERNSHIPS &amp; FULL-TIME • 2027
@@ -155,22 +153,44 @@ export default function App() {
       <ContactSection />
 
       {/* FOOTER */}
-      <footer className="border-t border-white/[0.06] py-12 px-6 text-center font-sans text-xs text-[#A1A1AA] bg-[#141417]">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <footer className="border-t border-white/[0.06] py-10 px-6 sm:px-12 text-xs font-mono text-gray-500 bg-[#141417]">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
-            &copy; {new Date().getFullYear()} Ritwik Gupta // Systems &amp; Distributed Architecture
+            &copy; {new Date().getFullYear()} Ritwik Gupta • Backend Systems &amp; Distributed Architecture
           </div>
-          <div className="flex items-center gap-6 text-[#A1A1AA]">
-            <a href="mailto:ritwikg.205@gmail.com" className="hover:text-white transition">
-              Email
+          <div className="flex items-center gap-5 sm:gap-6">
+            <a
+              href="https://github.com/ritwikg205"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-[#EAEAEA] transition-colors"
+            >
+              GitHub
             </a>
             <span>•</span>
-            <button onClick={() => handleNavigateSection('profile-skills-resume')} className="hover:text-white transition">
-              Resume
-            </button>
+            <a
+              href="https://www.linkedin.com/in/ritwikg205"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-[#EAEAEA] transition-colors"
+            >
+              LinkedIn
+            </a>
             <span>•</span>
-            <button onClick={() => handleNavigateSection('architecture-lab')} className="hover:text-white transition">
-              Projects
+            <a
+              href="https://leetcode.com/u/ritwik_gupta/"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-[#EAEAEA] transition-colors"
+            >
+              LeetCode
+            </a>
+            <span>•</span>
+            <button
+              onClick={() => scrollToTop(650)}
+              className="hover:text-[#EAEAEA] transition-colors cursor-pointer"
+            >
+              Top ↑
             </button>
           </div>
         </div>

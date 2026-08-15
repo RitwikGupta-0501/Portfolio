@@ -12,13 +12,12 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
   onSelectProject,
 }) => {
   return (
-    <section id="architecture-lab" className="py-20 px-6 sm:px-8 lg:px-12 max-w-6xl mx-auto space-y-12">
+    <section id="architecture-lab" className="py-16 sm:py-20 scroll-mt-20 px-6 md:px-12 max-w-6xl mx-auto space-y-10">
       {/* Section Header */}
       <div className="border-b border-white/[0.08] pb-6 flex items-baseline justify-between gap-6">
         <div>
-          <div className="text-xs font-mono mb-1.5 flex items-center gap-2 tracking-wider uppercase">
-            <span className="text-[#C59458] font-semibold">01</span>
-            <span className="text-gray-500">• ARCHITECTURE &amp; SYSTEMS</span>
+          <div className="text-[#C59458] text-xs font-mono tracking-[0.2em] uppercase mb-2 font-medium">
+            01 • ARCHITECTURE &amp; SYSTEMS
           </div>
           <h2 className="text-3xl sm:text-4xl font-normal font-serif-display text-[#EAEAEA] tracking-tight">
             Projects

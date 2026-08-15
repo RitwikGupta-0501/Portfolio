@@ -21,12 +21,12 @@ export const SkillsResumeSection: React.FC = () => {
   };
 
   return (
-    <section id="profile-skills-resume" className="max-w-7xl mx-auto px-6 md:px-12 py-24 sm:py-32">
+    <section id="profile-skills-resume" className="py-16 sm:py-20 scroll-mt-20 px-6 md:px-12 max-w-7xl mx-auto">
       {/* 1. Header Anchor & Title */}
       <div className="mb-8">
-        <span className="text-[#C59458] text-xs tracking-[0.2em] font-medium uppercase font-mono mb-2 block">
+        <div className="text-[#C59458] text-xs font-mono tracking-[0.2em] uppercase mb-2 font-medium">
           04 • TECHNICAL DOSSIER &amp; TOOLING
-        </span>
+        </div>
         <h2 className="font-serif-display text-3xl sm:text-4xl text-[#EAEAEA] tracking-tight">
           Skills &amp; Environment
         </h2>
