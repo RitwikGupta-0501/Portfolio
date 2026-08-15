@@ -148,7 +148,7 @@ export const ProjectDrawer: React.FC<ProjectDrawerProps> = ({
                 >
                   <Github className="w-3.5 h-3.5 text-gray-400 group-hover:text-white transition-colors" />
                   <span className="font-sans text-xs">Source</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#B58E62] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <ArrowUpRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#C59458] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>
               )}
             </div>
@@ -204,12 +204,12 @@ export const ProjectDrawer: React.FC<ProjectDrawerProps> = ({
                   onClick={() => onSelectLayer(null)}
                   className={`w-full text-left py-2.5 pl-3 border-l cursor-pointer bg-transparent transition-colors duration-100 ${
                     selectedLayerId === null
-                      ? 'border-[#B58E62] text-[#EAEAEA] font-medium'
+                      ? 'border-[#C59458] text-[#EAEAEA] font-medium'
                       : 'border-transparent text-[#8C8C8C] hover:text-[#C4C4C8]'
                   }`}
                 >
                   <div className="flex items-baseline gap-2.5">
-                    <span className="text-xs font-mono text-[#B58E62] shrink-0">00</span>
+                    <span className="text-xs font-mono text-[#C59458] shrink-0">00</span>
                     <span className="text-sm font-sans">System Overview</span>
                   </div>
                 </button>
@@ -225,12 +225,12 @@ export const ProjectDrawer: React.FC<ProjectDrawerProps> = ({
                       onClick={() => onSelectLayer(layer.id)}
                       className={`w-full text-left py-2.5 pl-3 border-l cursor-pointer bg-transparent transition-colors duration-100 ${
                         isSelected
-                          ? 'border-[#B58E62] text-[#EAEAEA] font-medium'
+                          ? 'border-[#C59458] text-[#EAEAEA] font-medium'
                           : 'border-transparent text-[#8C8C8C] hover:text-[#C4C4C8]'
                       }`}
                     >
                       <div className="flex items-baseline gap-2.5">
-                        <span className="text-xs font-mono text-[#B58E62] shrink-0">{layerNum}</span>
+                        <span className="text-xs font-mono text-[#C59458] shrink-0">{layerNum}</span>
                         <span className="text-sm font-sans leading-snug">{layer.name}</span>
                       </div>
                     </button>
@@ -248,7 +248,7 @@ export const ProjectDrawer: React.FC<ProjectDrawerProps> = ({
                   <>
                     {/* The Problem */}
                     <div>
-                      <div className="text-xs font-mono tracking-[0.2em] text-[#B58E62] uppercase font-semibold mb-2">
+                      <div className="text-xs font-mono tracking-[0.2em] text-[#C59458] uppercase font-semibold mb-2">
                         THE PROBLEM
                       </div>
                       <p className="font-sans text-sm sm:text-base text-gray-300 leading-relaxed">
@@ -259,7 +259,7 @@ export const ProjectDrawer: React.FC<ProjectDrawerProps> = ({
 
                     {/* Architectural Rationale */}
                     <div>
-                      <div className="text-xs font-mono tracking-[0.2em] text-[#B58E62] uppercase font-semibold mb-2">
+                      <div className="text-xs font-mono tracking-[0.2em] text-[#C59458] uppercase font-semibold mb-2">
                         ARCHITECTURAL RATIONALE
                       </div>
                       <p className="font-sans text-sm sm:text-base text-gray-300 leading-relaxed">
@@ -272,7 +272,7 @@ export const ProjectDrawer: React.FC<ProjectDrawerProps> = ({
                     {/* Workload Baseline */}
                     {renderedProject.globalView?.benchmarksWorkload && (
                       <div>
-                        <div className="text-xs font-mono tracking-[0.2em] text-[#B58E62] uppercase font-semibold mb-2">
+                        <div className="text-xs font-mono tracking-[0.2em] text-[#C59458] uppercase font-semibold mb-2">
                           BENCHMARK WORKLOAD &amp; HARDWARE BASELINE
                         </div>
                         <p className="font-sans text-sm sm:text-base text-gray-300 leading-relaxed">
@@ -286,7 +286,7 @@ export const ProjectDrawer: React.FC<ProjectDrawerProps> = ({
                   <>
                     {/* Subsystem Overview */}
                     <div>
-                      <div className="text-xs font-mono tracking-[0.2em] text-[#B58E62] uppercase font-semibold mb-2">
+                      <div className="text-xs font-mono tracking-[0.2em] text-[#C59458] uppercase font-semibold mb-2">
                         SUBSYSTEM CONTEXT
                       </div>
                       <p className="font-sans text-sm sm:text-base text-gray-300 leading-relaxed">
@@ -296,7 +296,7 @@ export const ProjectDrawer: React.FC<ProjectDrawerProps> = ({
 
                     {/* Architectural Rationale */}
                     <div>
-                      <div className="text-xs font-mono tracking-[0.2em] text-[#B58E62] uppercase font-semibold mb-2">
+                      <div className="text-xs font-mono tracking-[0.2em] text-[#C59458] uppercase font-semibold mb-2">
                         ARCHITECTURAL RATIONALE
                       </div>
                       <p className="font-sans text-sm sm:text-base text-gray-300 leading-relaxed">
@@ -306,7 +306,7 @@ export const ProjectDrawer: React.FC<ProjectDrawerProps> = ({
 
                     {/* Protocols & Invariants */}
                     <div>
-                      <div className="text-xs font-mono tracking-[0.2em] text-[#B58E62] uppercase font-semibold mb-2">
+                      <div className="text-xs font-mono tracking-[0.2em] text-[#C59458] uppercase font-semibold mb-2">
                         PROTOCOLS &amp; LATENCY INVARIANTS
                       </div>
                       <p className="font-mono text-xs sm:text-sm text-[#A1A1AA] leading-relaxed">

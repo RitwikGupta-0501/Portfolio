@@ -17,13 +17,13 @@ const PHASES: ProcessPhase[] = [
     eyebrow: '02 • THE FOUNDATION',
     title: 'Architect & Align',
     narrative:
-      'Once the problem is clear, I start drafting the architecture. I prefer to keep things boring and reliable over chasing the latest trendy framework. I map out the data structures, API contracts, and failure states, ensuring the rest of the team is aligned before we start building.',
+      'Once the problem is clear, I start drafting the architecture. I tend to default to the reliable and proven, but I never hesitate to adopt modern tools and paradigms when the problem calls for it. I map out the data structures, API contracts, and failure states, ensuring the rest of the team is aligned before we start building.',
   },
   {
     eyebrow: '03 • THE EXECUTION',
     title: 'Deep Work',
     narrative:
-      'This is where the headphones go on. I focus on writing clean, modular, and heavily tested code. Whether I am building a Python web backend or tinkering with a Rust runtime, my goal is always the same: write software that is easy to reason about and hard to break.',
+      'This is where the headphones go on. I focus on writing clean, modular, and heavily tested code. Whether I am building an asynchronous Python backend, designing microservices in Go, or optimizing a compute pipeline, my goal is always the same: write software that is easy to reason about and hard to break.',
   },
   {
     eyebrow: '04 • THE HANDSHAKE',
@@ -57,7 +57,7 @@ export const ProcessTimelineSection: React.FC = () => {
           {PHASES.map((phase) => (
             <div key={phase.eyebrow} className="flex flex-col">
               {/* The Eyebrow (Chapter Marker) */}
-              <span className="text-[#B58E62] text-xs tracking-[0.2em] font-medium uppercase block mb-3 font-mono">
+              <span className="text-[#C59458] text-xs tracking-[0.2em] font-medium uppercase block mb-3 font-mono">
                 {phase.eyebrow}
               </span>
 

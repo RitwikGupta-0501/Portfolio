@@ -17,7 +17,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
       <div className="border-b border-white/[0.08] pb-6 flex items-baseline justify-between gap-6">
         <div>
           <div className="text-xs font-mono mb-1.5 flex items-center gap-2 tracking-wider uppercase">
-            <span className="text-[#B58E62] font-semibold">01</span>
+            <span className="text-[#C59458] font-semibold">01</span>
             <span className="text-gray-500">• ARCHITECTURE &amp; SYSTEMS</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-normal font-serif-display text-[#EAEAEA] tracking-tight">

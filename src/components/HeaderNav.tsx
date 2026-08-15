@@ -34,28 +34,28 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
             className="group relative py-1 text-[#EAEAEA]/70 hover:text-[#EAEAEA] transition-colors duration-200"
           >
             <span>Projects</span>
-            <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#B58E62] transition-all duration-300 ease-out group-hover:w-full" />
+            <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#C59458] transition-all duration-300 ease-out group-hover:w-full" />
           </button>
           <button
             onClick={() => onNavigateSection('engineering-process')}
             className="group relative py-1 text-[#EAEAEA]/70 hover:text-[#EAEAEA] transition-colors duration-200"
           >
             <span>Process</span>
-            <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#B58E62] transition-all duration-300 ease-out group-hover:w-full" />
+            <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#C59458] transition-all duration-300 ease-out group-hover:w-full" />
           </button>
           <button
             onClick={() => onNavigateSection('experience-log')}
             className="group relative py-1 text-[#EAEAEA]/70 hover:text-[#EAEAEA] transition-colors duration-200"
           >
             <span>Experience</span>
-            <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#B58E62] transition-all duration-300 ease-out group-hover:w-full" />
+            <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#C59458] transition-all duration-300 ease-out group-hover:w-full" />
           </button>
           <button
             onClick={() => onNavigateSection('profile-skills-resume')}
             className="group relative py-1 text-[#EAEAEA]/70 hover:text-[#EAEAEA] transition-colors duration-200"
           >
             <span>Skills &amp; Resume</span>
-            <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#B58E62] transition-all duration-300 ease-out group-hover:w-full" />
+            <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#C59458] transition-all duration-300 ease-out group-hover:w-full" />
           </button>
         </nav>
 
@@ -66,8 +66,8 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
             className="group relative py-1 text-[#EAEAEA]/70 hover:text-white text-sm sm:text-base font-sans font-medium tracking-wide flex items-center gap-1.5 transition-colors"
           >
             <span>Contact</span>
-            <ArrowUpRight className="w-4 h-4 text-[#B58E62] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#B58E62] transition-all duration-300 ease-out group-hover:w-full" />
+            <ArrowUpRight className="w-4 h-4 text-[#C59458] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#C59458] transition-all duration-300 ease-out group-hover:w-full" />
           </button>
         </div>
 

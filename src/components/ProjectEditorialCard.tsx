@@ -37,7 +37,7 @@ export const ProjectEditorialCard: React.FC<ProjectEditorialCardProps> = ({
           <span className="text-[11px] font-mono tracking-wider uppercase px-3 py-1 rounded-full bg-[#18181B]/80 backdrop-blur-md text-[#EAEAEA] border border-white/10 shadow-sm">
             {project.category}
           </span>
-          <span className="text-[11px] font-mono px-2.5 py-1 rounded-full bg-[#18181B]/80 backdrop-blur-md text-[#B58E62] border border-white/10 font-semibold shadow-sm">
+          <span className="text-[11px] font-mono px-2.5 py-1 rounded-full bg-[#18181B]/80 backdrop-blur-md text-[#C59458] border border-white/10 font-semibold shadow-sm">
             {project.primaryLanguage}
           </span>
         </div>
@@ -59,12 +59,12 @@ export const ProjectEditorialCard: React.FC<ProjectEditorialCardProps> = ({
       <div className="space-y-2 px-1">
         {/* Title Row with Elegant Serif Name + Chapter Number */}
         <div className="flex items-baseline justify-between gap-4">
-          <h3 className="font-serif-display text-2xl sm:text-3xl lg:text-4xl font-normal text-[#EAEAEA] tracking-tight transition-colors duration-300 group-hover:text-[#B58E62] flex items-center gap-2">
+          <h3 className="font-serif-display text-2xl sm:text-3xl lg:text-4xl font-normal text-[#EAEAEA] tracking-tight transition-colors duration-300 group-hover:text-[#C59458] flex items-center gap-2">
             <span>{project.name}</span>
-            <ArrowUpRight className="w-5 h-5 text-[#B58E62] opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            <ArrowUpRight className="w-5 h-5 text-[#C59458] opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </h3>
           
-          <span className="font-mono text-sm sm:text-base font-semibold text-[#B58E62] shrink-0 tracking-wider">
+          <span className="font-mono text-sm sm:text-base font-semibold text-[#C59458] shrink-0 tracking-wider">
             {chapterFormatted}
           </span>
         </div>

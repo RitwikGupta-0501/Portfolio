@@ -73,8 +73,8 @@ export default function App() {
 
       {/* HERO SECTION - Refined Serif Identity & Editorial Introduction */}
       <section className="relative pt-24 pb-20 sm:pt-32 sm:pb-28 px-6 sm:px-8 max-w-4xl mx-auto flex flex-col items-start text-left">
-        {/* The Eyebrow: Purely typographic, all-caps, wide letter spacing, muted brass accent (#B58E62) */}
-        <div className="text-xs font-sans uppercase font-medium tracking-[0.2em] text-[#B58E62] mb-6">
+        {/* The Eyebrow: Purely typographic, all-caps, wide letter spacing, bronze/brass accent (#C59458) */}
+        <div className="text-xs font-sans uppercase font-medium tracking-[0.2em] text-[#C59458] mb-6">
           OPEN TO 6-MONTH INTERNSHIPS &amp; FULL-TIME • 2027
         </div>
 
@@ -100,7 +100,7 @@ export default function App() {
             className="group btn-primary px-6 py-3 text-sm font-sans font-semibold flex items-center gap-2.5 cursor-pointer select-none"
           >
             <span>View Projects</span>
-            <ArrowDown className="w-4 h-4 text-[#121214] arrow-drop-settle" />
+            <ArrowDown className="w-4 h-4 text-[#121214] transition-transform duration-200 group-hover:translate-y-1" />
           </button>
 
           <div className="flex items-center gap-2">

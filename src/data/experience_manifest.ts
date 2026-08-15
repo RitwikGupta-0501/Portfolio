@@ -10,21 +10,21 @@ export const EXPERIENCE_MANIFEST: ExperienceManifestConfig = {
   items: [
     {
       id: 'exp-1',
-      period: '2023 - PRESENT',
+      period: '2023 — PRESENT',
       role: 'Principal Systems & Infrastructure Architect',
       company: 'Apex High-Frequency Systems',
       type: 'Full-time',
       description: 'Architecting ultra-low latency distributed trading engines, custom Linux container execution runtimes, and GPU acceleration kernels.',
       achievements: [
         'Engineered WarpKV key-value store reducing p99 lookup latency from 1.2ms to 0.18ms via CUDA & PCIe DMA offloading.',
-        'Designed kernel bypass DPDK networking pipeline handling 8.5 Million trades/second with sub-microsecond tick latency.',
+        'Designed kernel-bypass DPDK networking pipeline handling 8.5M trades/sec with sub-microsecond tick latency.',
         'Led infrastructure team migrating 450+ microservices to custom bare-metal eBPF Kubernetes nodes.'
       ],
       skills: ['C++20', 'CUDA', 'Rust', 'eBPF', 'DPDK', 'Distributed Systems', 'Linux Kernel']
     },
     {
       id: 'exp-2',
-      period: '2020 - 2023',
+      period: '2020 — 2023',
       role: 'Senior Backend Systems Engineer',
       company: 'ScaleCloud Infrastructure Inc.',
       type: 'Full-time',
@@ -38,7 +38,7 @@ export const EXPERIENCE_MANIFEST: ExperienceManifestConfig = {
     },
     {
       id: 'exp-3',
-      period: '2017 - 2020',
+      period: '2017 — 2020',
       role: 'Infrastructure & Software Engineer',
       company: 'DataStream Platform Systems',
       type: 'Full-time',
