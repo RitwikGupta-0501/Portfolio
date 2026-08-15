@@ -13,10 +13,10 @@ export const ContactSection: React.FC = () => {
 
   return (
     <section id="contact-handshake" className="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-      <div className="glass-panel rounded-2xl p-8 sm:p-12 border border-white/[0.08] shadow-2xl relative overflow-hidden text-center space-y-8">
+      <div className="glass-panel rounded-2xl p-8 sm:p-12 border border-white/[0.08] shadow-2xl relative overflow-hidden text-center space-y-8 bg-[#222226]">
         <div className="max-w-2xl mx-auto space-y-3">
           <div className="inline-flex items-center gap-2 text-xs font-mono text-slate-400 font-medium tracking-wider">
-            <Mail className="w-3.5 h-3.5 text-slate-300" />
+            <Mail className="w-3.5 h-3.5 text-[#B58E62]" />
             <span>05 // DIRECT CHANNEL</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold font-heading text-white tracking-tight">
@@ -29,9 +29,9 @@ export const ContactSection: React.FC = () => {
 
         {/* Email Address in Rectangular Box with Simple Icon-Only Copy Button */}
         <div className="max-w-md mx-auto pt-2">
-          <div className="bg-[#090A0E] border border-white/10 hover:border-white/20 rounded-xl p-3 flex items-center justify-between gap-3 transition-all">
+          <div className="bg-[#18181B] border border-white/10 hover:border-white/20 rounded-xl p-3 flex items-center justify-between gap-3 transition-all">
             <div className="flex items-center gap-3 pl-2 min-w-0">
-              <div className="p-2 bg-white/[0.05] border border-white/10 rounded-lg text-slate-300 shrink-0">
+              <div className="p-2 bg-white/[0.05] border border-white/10 rounded-lg text-[#B58E62] shrink-0">
                 <Mail className="w-4 h-4" />
               </div>
               <span className="font-mono text-sm sm:text-base font-semibold text-white truncate select-all">
@@ -46,7 +46,7 @@ export const ContactSection: React.FC = () => {
               className={`p-2.5 rounded-lg border transition-all shrink-0 flex items-center justify-center ${
                 copied
                   ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-400'
-                  : 'bg-[#141720] border-white/10 text-slate-300 hover:text-white hover:border-white/20'
+                  : 'bg-[#242428] border-white/10 text-slate-300 hover:text-white hover:border-white/20'
               }`}
             >
               {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}

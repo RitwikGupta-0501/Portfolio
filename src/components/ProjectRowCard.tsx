@@ -22,8 +22,8 @@ export const ProjectRowCard: React.FC<ProjectRowCardProps> = ({
       onClick={() => onSelect(project)}
       className={`glass-panel rounded-xl overflow-hidden cursor-pointer transition-all duration-200 border relative group ${
         isSelected
-          ? 'border-white/35 bg-[#121622] ring-1 ring-white/20 shadow-2xl'
-          : 'border-white/[0.07] bg-[#0E1017] hover:border-white/20 hover:bg-[#12141C]'
+          ? 'border-[#B58E62]/60 bg-[#28282D] ring-1 ring-[#B58E62]/30 shadow-2xl'
+          : 'border-white/[0.07] bg-[#222226] hover:border-white/20 hover:bg-[#26262B]'
       }`}
     >
       <div className="p-5 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-6">
@@ -36,7 +36,7 @@ export const ProjectRowCard: React.FC<ProjectRowCardProps> = ({
               {project.category}
             </span>
             <span className="text-slate-600">•</span>
-            <span className="text-amber-200/90 font-medium">
+            <span className="text-[#B58E62] font-medium">
               {project.subtitle}
             </span>
           </div>
@@ -47,7 +47,7 @@ export const ProjectRowCard: React.FC<ProjectRowCardProps> = ({
             </h3>
             <ArrowUpRight
               className={`w-4 h-4 transition ${
-                isSelected ? 'text-white translate-x-0.5 -translate-y-0.5' : 'text-slate-500 group-hover:text-slate-300'
+                isSelected ? 'text-[#B58E62] translate-x-0.5 -translate-y-0.5' : 'text-slate-500 group-hover:text-slate-300'
               }`}
             />
           </div>
@@ -61,7 +61,7 @@ export const ProjectRowCard: React.FC<ProjectRowCardProps> = ({
             {project.techTags.map((tag) => (
               <span
                 key={tag}
-                className="text-[11px] font-mono px-2 py-0.5 rounded bg-[#090A0E] border border-white/[0.08] text-slate-300"
+                className="text-[11px] font-mono px-2 py-0.5 rounded bg-[#18181B] border border-white/[0.08] text-slate-300"
               >
                 {tag}
               </span>
