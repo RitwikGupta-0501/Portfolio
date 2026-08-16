@@ -8,7 +8,7 @@ export interface ProjectsManifestConfig {
 
 export const PROJECTS_MANIFEST: ProjectsManifestConfig = {
   title: 'ARCHITECTURE & LABS SHOWCASE',
-  totalProjectsCount: 4,
+  totalProjectsCount: 3,
   items: [
     {
       id: 'warpkv',
@@ -433,166 +433,291 @@ void AgentRenderer::DrawInstanced(GLuint vao, int agent_count) {
       ]
     },
     {
-      id: 'hyperorchestrator',
-      name: 'HyperOrchestrator',
-      subtitle: 'Bare-Metal Container Engine & K8s Operator',
-      tagline: 'Lightweight rootless container runtime with eBPF telemetry and Cgroups v2.',
-      category: 'Cloud Infrastructure & Kernel',
-      primaryLanguage: 'Rust / Go',
+      id: 'echo',
+      name: 'Echo',
+      subtitle: 'Extensible Desktop Music Player',
+      tagline: 'Rust/Tauri music player with local library playback, persistent queues, and sandboxed provider extensions.',
+      category: 'Desktop Systems & Media',
+      primaryLanguage: 'Rust / TypeScript',
       status: 'ACTIVE',
-      description: 'Replaces heavy Docker/containerd stacks with a single-binary Rust container isolation runtime that boots lightweight isolated sandbox micro-containers in under 8ms.',
-      blueprintImage: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80',
+      description: 'Echo is a desktop music player for local and remote audio that combines a Rust audio backend, Svelte 5 interface, SQLite-backed library management, deterministic queue state, and sandboxed WebAssembly provider plugins.',
+      blueprintImage: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80',
       metrics: {
-        memory: '24 MB / Container',
-        latency: '7.8 ms Boot',
-        throughput: '1,200 Pods/Node',
+        latency: '~1 μs (Next)',
+        throughput: '~32 ms (100k)',
+        memory: '~2.1 MB (10k)',
       },
-      techTags: ['Rust', 'Go', 'Linux Cgroups v2', 'eBPF', 'OverlayFS', 'Kubernetes CRD'],
+      techTags: [
+        'Rust',
+        'Tauri 2',
+        'SvelteKit',
+        'Svelte 5',
+        'TypeScript',
+        'SQLite / rusqlite',
+        'rodio',
+        'Symphonia',
+        'Extism WebAssembly',
+        'Tokio',
+        'Criterion.rs'
+      ],
       globalView: {
-        overviewParagraph: 'HyperOrchestrator provides sub-10ms micro-container sandbox provisioning by issuing direct Linux unshare, pivot_root, and Cgroups v2 syscalls in Rust, eliminating OCI runtime daemon bloat.',
-        problemStatement: 'Standard containerd/Docker runtime stacks take 800ms-2.5s to cold start containers and consume 120MB+ daemon RAM per node.',
-        architecturalSolution: 'Replaces standard OCI daemons with a single 4MB compiled Rust binary coupled with Go Kubernetes CRD reconciliation and eBPF XDP network filters.',
-        benchmarksWorkload: 'Multi-Tenant Micro-Sandbox Cold-Start Test (10,000 Containers)',
+        overviewParagraph:
+          'Echo is a minimal desktop music player built around a Rust-owned backend and a Svelte remote-control frontend. The backend owns playback, library indexing, queue state, provider execution, settings, and persistence, while the UI communicates through Tauri IPC events and commands.',
+        problemStatement:
+          'Desktop music players often couple UI state, playback control, and plugin execution tightly, making queues brittle, extension behavior unsafe, and playback vulnerable to UI/runtime stalls.',
+        architecturalSolution:
+          'Echo separates concerns through a daemon-style Rust backend: audio runs on a dedicated OS thread, SQLite access is serialized through a database actor, queue mutations are centralized in a deterministic state machine, and remote providers execute through a constrained WebAssembly plugin layer.',
+        benchmarksWorkload:
+          'Criterion.rs queue benchmarks using synthetic queues from 100 to 100,000 tracks',
         benchmarksList: [
-          { label: 'Sandbox Boot Delay', value: '7.8 ms', subtext: 'Sub-10ms cold start micro-containers', highlight: true },
-          { label: 'Node Pod Density', value: '1,200 Pods/Node', subtext: 'High-density bare-metal placement', highlight: true },
-          { label: 'Memory Footprint', value: '24 MB / Container', subtext: 'Minimal RAM consumption per sandbox' },
-          { label: 'Binary Footprint', value: '4.2 MB', subtext: 'Single statically-linked Rust binary' }
+          { label: 'Next Track Operation', value: '~1 microsecond', subtext: 'O(1) queue navigation in normal/shuffle modes', highlight: true },
+          { label: 'Shuffle Generation', value: '~32 ms / 100k tracks', subtext: 'Fisher-Yates shuffle benchmark', highlight: true },
+          { label: 'Reorder Operation', value: '~2.6 ms / 10k tracks', subtext: 'Drag-and-drop queue reorder benchmark' },
+          { label: 'Set Queue', value: '~75 microseconds / 10k tracks', subtext: 'Linear queue initialization benchmark' },
+          { label: 'Memory Profile', value: '~2.1 MB / 10k tracks', subtext: 'Estimated queue + shuffle heap footprint' },
+          { label: 'Tests', value: '42 Rust tests present', subtext: 'Cargo test suite runs locally; full run is compile-heavy due to native/Tauri/WASM dependencies' }
         ],
         deploymentStack: {
-          coreSystems: ['Rust 1.78+', 'Go 1.22', 'Linux Kernel 5.15+ (Cgroups v2)'],
-          buildValidation: ['Cargo Test', 'eBPF Kernel Verifier'],
-          libraries: ['nix crate', 'libbpf-rs', 'client-go'],
-          repoUrl: 'https://github.com/apex-systems/hyper-orchestrator'
+          coreSystems: [
+            'Rust backend with Tauri 2',
+            'SvelteKit SPA frontend',
+            'Dedicated audio and database threads'
+          ],
+          buildValidation: [
+            'Criterion.rs queue benchmarks',
+            '42 Rust unit tests',
+            'Svelte-check and TypeScript compilation'
+          ],
+          libraries: [
+            'rodio + Symphonia for playback and decoding',
+            'rusqlite bundled SQLite for local persistence',
+            'Extism for WebAssembly provider sandboxing',
+            'reqwest/rustls for remote provider and stream access'
+          ],
+          repoUrl: 'https://github.com/RitwikGupta-0501/music-player'
         }
       },
       layers: [
         {
-          id: 'layer-crd',
-          name: 'Kubernetes CRD Operator & Scheduler',
-          subtitle: 'Go-Based Declarative Controller Loop',
-          category: 'Ingress',
-          color: '#00E5FF',
-          description: 'Custom Kubernetes custom resource definition controller watching cluster event streams and calculating optimal NUMA-aware node placement.',
-          architectureRationale: 'Ensures pod affinity and hardware isolation without relying on default generic kube-scheduler heuristics.',
-          techStack: ['Go 1.22', 'client-go', 'K8s Informer API'],
-          latency: '1.2 ms Sync',
-          throughput: '500 Events/s',
-          memoryFootprint: '64 MB RAM',
-          protocols: ['Kubernetes API / HTTP2'],
+          id: 'layer-audio-engine',
+          name: 'Audio Engine Layer',
+          subtitle: 'Dedicated Rust Playback Thread',
+          category: 'Playback',
+          color: '#3B82F6',
+          description:
+            'Handles local and remote playback through rodio and Symphonia, including FLAC, MP3, WAV, OGG, M4A/AAC, ALAC, Vorbis, PCM, Opus, and HLS stream support.',
+          architectureRationale:
+            'Playback is isolated on its own OS thread and controlled through message passing, reducing the chance that UI work, IPC latency, or async runtime scheduling interrupts audio behavior.',
+          techStack: ['Rust', 'rodio', 'Symphonia', 'HLS', 'Opus', 'rubato'],
+          latency: 'Zero UI audio stalls',
+          throughput: 'Multi-format stream decoding',
+          memoryFootprint: 'Dedicated ring buffer',
+          protocols: ['Tauri IPC events', 'mpsc command channel', 'HTTP/HLS streams'],
           metrics: [
-            { label: 'Reconciliation Loop', value: '10 ms' },
-            { label: 'Scheduling Accuracy', value: '99.8%' },
+            { label: 'Execution Thread', value: 'Dedicated OS Audio Thread' },
+            { label: 'Codec Coverage', value: 'FLAC, MP3, WAV, AAC, Opus, HLS' }
           ],
           codeSnippet: {
-            language: 'go',
-            filename: 'operator_controller.go',
-            code: `// Declarative K8s reconcile loop for HyperPod CRD
-func (r *HyperPodReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
-	var pod hyperv1.HyperPod
-	if err := r.Get(ctx, req.NamespacedName, &pod); err != nil {
-		return ctrl.Result{}, client.IgnoreNotFound(err)
-	}
+            language: 'rust',
+            filename: 'audio_engine.rs',
+            code: `// Dedicated playback loop processing channel commands without UI contention
+pub fn spawn_audio_thread(mut rx: mpsc::Receiver<AudioCommand>, event_tx: Sender<AudioEvent>) {
+    std::thread::Builder::new()
+        .name("echo-audio-engine".into())
+        .spawn(move || {
+            let (_stream, stream_handle) = rodio::OutputStream::try_default().unwrap();
+            let sink = rodio::Sink::try_new(&stream_handle).unwrap();
 
-	if pod.Status.Phase == "" {
-		pod.Status.Phase = hyperv1.PodPhaseProvisioning
-		r.Status().Update(ctx, &pod)
-	}
-	return r.ScheduleOnBareMetalNode(ctx, &pod)
+            while let Ok(cmd) = rx.recv() {
+                match cmd {
+                    AudioCommand::PlayTrack(source) => {
+                        sink.stop();
+                        sink.append(source);
+                        sink.play();
+                        let _ = event_tx.send(AudioEvent::Playing);
+                    }
+                    AudioCommand::Pause => sink.pause(),
+                    AudioCommand::Seek(pos) => { let _ = sink.try_seek(pos); }
+                }
+            }
+        }).expect("failed to spawn audio playback thread");
 }`
           }
         },
         {
-          id: 'layer-ebpf',
-          name: 'eBPF Network & Tracepoint Hooks',
-          subtitle: 'XDP Kernel Packet Filter & Security',
-          category: 'Security',
-          color: '#3B82F6',
-          description: 'Kernel-level eBPF bytecode programs attached to XDP (eXpress Data Path) hooks for real-time packet filtering and latency tracing.',
-          architectureRationale: 'Observes network traffic and enforces micro-segmentation security rules directly inside the Linux kernel before socket allocation.',
-          techStack: ['eBPF / libbpf', 'XDP', 'BCC Tools', 'Rust aya'],
-          latency: '0.002 ms',
-          throughput: '25.0 Gbps Filter',
-          memoryFootprint: '16 MB Ring Buffer',
-          protocols: ['Kernel Socket Map / eBPF'],
+          id: 'layer-queue-state-machine',
+          name: 'Queue State Machine Layer',
+          subtitle: 'Persistent Shuffle, Repeat, Reorder, and Recovery',
+          category: 'State',
+          color: '#10B981',
+          description:
+            'Centralizes queue operations including set, add, clear, skip, jump, shuffle, repeat, drag-and-drop reorder, persistence, and recovery.',
+          architectureRationale:
+            'Queue mutations pass through one Rust state machine guarded by a mutex, making playback navigation deterministic and easier to test than frontend-owned queue state.',
+          techStack: ['Rust', 'SQLite', 'Criterion.rs', 'serde'],
+          latency: '~1 microsecond next-track operation',
+          throughput: '~100 rapid skips in ~2.1 ms',
+          memoryFootprint: '~2.1 MB for 10k queued tracks',
+          protocols: ['queue-changed events', 'Tauri commands'],
           metrics: [
-            { label: 'Overhead', value: '< 0.01%' },
-            { label: 'Filter Rule Capacity', value: '65,536' },
+            { label: 'Next-Track Op', value: '~1 μs O(1)' },
+            { label: 'Shuffle 100k', value: '~32 ms' }
           ],
           codeSnippet: {
             language: 'rust',
-            filename: 'ebpf_filter.rs',
-            code: `// Rust eBPF XDP Packet Filter Attached to Kernel Interface
-#[xdp]
-pub fn filter_ingress_packets(ctx: XdpContext) -> u32 {
-    match unsafe { try_filter_packets(&ctx) } {
-        Ok(action) => action,
-        Err(_) => xdp_action::XDP_PASS,
+            filename: 'queue_state.rs',
+            code: `// Deterministic queue state machine with Fisher-Yates shuffle & persistence
+pub struct QueueState {
+    tracks: Vec<TrackItem>,
+    shuffle_indices: Vec<usize>,
+    current_index: usize,
+    repeat_mode: RepeatMode,
+    is_shuffled: bool,
+}
+
+impl QueueState {
+    pub fn next(&mut self) -> Option<&TrackItem> {
+        if self.tracks.is_empty() { return None; }
+        let next_idx = match self.repeat_mode {
+            RepeatMode::Track => self.current_index,
+            RepeatMode::Queue => (self.current_index + 1) % self.tracks.len(),
+            RepeatMode::Off => (self.current_index + 1).min(self.tracks.len() - 1),
+        };
+        self.current_index = next_idx;
+        let actual_idx = if self.is_shuffled { self.shuffle_indices[next_idx] } else { next_idx };
+        self.tracks.get(actual_idx)
     }
 }`
           }
-        }
-      ]
-    },
-    {
-      id: 'nexusmesh',
-      name: 'NexusMesh',
-      subtitle: 'WASM-Powered Distributed Microservice Mesh',
-      tagline: 'Event-driven serverless service mesh with WebAssembly plugin sandboxes.',
-      category: 'Cloud Native & WASM',
-      primaryLanguage: 'Rust / TypeScript',
-      status: 'LAB',
-      description: 'Combines dynamic edge routing with microsecond WebAssembly plugin execution to evaluate complex access policies and payload transformations on live stream traffic.',
-      blueprintImage: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80',
-      metrics: {
-        memory: '18 MB / Node',
-        latency: '0.45 ms Overhead',
-        throughput: '1.5M Req/s Mesh',
-      },
-      techTags: ['Wasmtime', 'Rust', 'gRPC', 'Envoy Proxy API', 'Gossip Protocol'],
-      globalView: {
-        overviewParagraph: 'NexusMesh executes custom user middleware transformations safely in sandboxed WebAssembly execution contexts embedded directly inside high-throughput Envoy edge proxies.',
-        problemStatement: 'Traditional service mesh sidecars incur significant latency overhead when executing custom lua scripts or remote RPC authorization calls.',
-        architecturalSolution: 'Embeds the Wasmtime JIT runtime directly into a compiled Rust edge proxy, achieving sub-100 microsecond memory-isolated plugin execution.',
-        benchmarksWorkload: 'Mesh Gateway Middleware Execution (1 Million Requests)',
-        benchmarksList: [
-          { label: 'Mesh Overhead', value: '0.45 ms', subtext: 'Added latency per proxy hop', highlight: true },
-          { label: 'WASM Cold Start', value: '1.8 ms', subtext: 'Sub-2ms WASM module load delay', highlight: true },
-          { label: 'Throughput', value: '1.5M Req/s', subtext: 'Parallel mesh request routing' }
-        ],
-        deploymentStack: {
-          coreSystems: ['Rust', 'Wasmtime JIT', 'Envoy Proxy v1.28'],
-          buildValidation: ['cargo test', 'wasm32-wasi target'],
-          libraries: ['wit-bindgen', 'axum', 'tokio'],
-          repoUrl: 'https://github.com/apex-systems/nexus-mesh'
-        }
-      },
-      layers: [
+        },
         {
-          id: 'layer-gateway',
-          name: 'Global Edge Ingress Proxy',
-          subtitle: 'Envoy-Compatible Edge Gateway',
-          category: 'Ingress',
-          color: '#00E5FF',
-          description: 'Dynamic edge proxy routing incoming traffic based on header metadata, geo-location, and canary deployment rules.',
-          architectureRationale: 'Decouples external SSL/TLS processing and authentication from internal microservice workers.',
-          techStack: ['Envoy Proxy API', 'Rust axum', 'JWT Validator'],
-          latency: '0.15 ms',
-          throughput: '1.5M Req/s',
-          memoryFootprint: '128 MB RAM',
-          protocols: ['HTTP/3 QUIC', 'gRPC-Web'],
+          id: 'layer-database-actor',
+          name: 'Database Actor Layer',
+          subtitle: 'Serialized SQLite Access',
+          category: 'Persistence',
+          color: '#F59E0B',
+          description:
+            'Stores albums, tracks, playlists, settings, provider registry data, provider storage, and persisted queue snapshots.',
+          architectureRationale:
+            'All rusqlite calls are funneled through a single database thread via request/response channels, avoiding concurrent SQLite writer contention.',
+          techStack: ['rusqlite', 'SQLite', 'Tokio oneshot', 'mpsc channels'],
+          latency: 'Serialized query execution',
+          throughput: 'Zero writer lock contention',
+          memoryFootprint: 'Embedded SQLite database',
+          protocols: ['DbRequest actor messages'],
           metrics: [
-            { label: 'TLS Handshake', value: '< 1.5 ms' },
-            { label: 'Canary Precision', value: '0.1%' },
+            { label: 'Concurrency Model', value: 'Single-Writer Actor Channel' },
+            { label: 'Engine', value: 'rusqlite Bundled' }
           ],
           codeSnippet: {
             language: 'rust',
-            filename: 'edge_proxy_router.rs',
-            code: `// Dynamic edge proxy request dispatcher
-pub async fn handle_edge_request(req: Request<Body>) -> Result<Response<Body>, ProxyError> {
-    let route = ROUTE_TABLE.read().unwrap().match_route(req.uri().path());
-    forward_to_upstream(route.select_endpoint(), req).await
+            filename: 'db_actor.rs',
+            code: `// Actor pattern funneling all SQLite queries through dedicated thread
+pub enum DbRequest {
+    PersistQueue { snapshot: QueueSnapshot, resp: oneshot::Sender<Result<()>> },
+    QueryLibrary { filter: SearchFilter, resp: oneshot::Sender<Result<Vec<TrackItem>>> },
+}
+
+pub fn spawn_db_actor(conn: Connection, mut rx: mpsc::Receiver<DbRequest>) {
+    std::thread::spawn(move || {
+        while let Some(req) = rx.blocking_recv() {
+            match req {
+                DbRequest::PersistQueue { snapshot, resp } => {
+                    let res = execute_persist_queue(&conn, &snapshot);
+                    let _ = resp.send(res);
+                }
+                DbRequest::QueryLibrary { filter, resp } => {
+                    let res = query_tracks(&conn, &filter);
+                    let _ = resp.send(res);
+                }
+            }
+        }
+    });
 }`
+          }
+        },
+        {
+          id: 'layer-provider-sandbox',
+          name: 'Provider Sandbox Layer',
+          subtitle: 'Deprecated Lua Model Replaced by Extism WebAssembly Plugins',
+          category: 'Extensions',
+          color: '#EC4899',
+          description:
+            'Loads enabled provider plugins, exposes search/resolve/module APIs, applies plugin timeouts and memory limits, and bridges controlled host functions such as HTTP and provider storage.',
+          architectureRationale:
+            'Remote discovery code runs outside the core app logic as constrained WebAssembly plugins with explicit host capabilities, reducing risk from third-party provider behavior.',
+          techStack: ['Extism', 'WebAssembly', 'reqwest', 'Semaphore concurrency limits'],
+          latency: '15s search timeout; 3s module fetch timeout',
+          throughput: '4 concurrent search permits; 4 concurrent explore permits',
+          memoryFootprint: 'Extism memory max set to 400 pages',
+          protocols: ['WASM host functions', 'JSON plugin calls'],
+          metrics: [
+            { label: 'Sandbox Runtime', value: 'Extism WASM Environment' },
+            { label: 'Memory Ceiling', value: '400 Pages Max' }
+          ],
+          codeSnippet: {
+            language: 'rust',
+            filename: 'wasm_provider.rs',
+            code: `// WebAssembly plugin sandbox execution with strict capability limits
+pub async fn execute_provider_search(
+    plugin_bytes: &[u8],
+    query: &str,
+    permit: SemaphorePermit<'_>
+) -> Result<Vec<SearchResult>> {
+    let manifest = Manifest::new([Wasm::data(plugin_bytes)])
+        .with_memory_max(400); // 400 pages memory barrier
+    
+    let mut plugin = PluginBuilder::new(manifest)
+        .with_wasi(false)
+        .with_function("host_http_fetch", [ValType::I64], [ValType::I64], host_http_fetch)
+        .build()?;
+
+    let output = plugin.call::<&str, &str>("search", query)?;
+    serde_json::from_str(output).map_err(Into::into)
+}`
+          }
+        },
+        {
+          id: 'layer-svelte-ui',
+          name: 'Frontend Control Layer',
+          subtitle: 'Svelte 5 Remote-Control Interface',
+          category: 'Interface',
+          color: '#8B5CF6',
+          description:
+            'Provides library browsing, global search, playlists, provider management, playback controls, queue sidebar, settings, toasts, and debug views.',
+          architectureRationale:
+            'The frontend caches backend-emitted state but does not own authoritative playback or queue state, keeping UI interactions synchronized with backend events.',
+          techStack: ['SvelteKit', 'Svelte 5 runes', 'TypeScript', 'Tauri API'],
+          latency: '60fps progress interpolation via requestAnimationFrame',
+          throughput: 'State sync over Tauri IPC',
+          memoryFootprint: 'Lightweight Svelte 5 runtime',
+          protocols: ['Tauri invoke/listen', 'player-sync', 'queue-changed'],
+          metrics: [
+            { label: 'Progress Tick', value: '60 FPS via rAF' },
+            { label: 'State Authority', value: 'Rust Backend Authority' }
+          ],
+          codeSnippet: {
+            language: 'svelte',
+            filename: 'PlayerBar.svelte',
+            code: `<!-- Svelte 5 reactive remote control interface synced with Tauri backend -->
+<script lang="ts">
+  import { invoke } from '@tauri-apps/api/core';
+  import { listen } from '@tauri-apps/api/event';
+
+  let playerState = $state({ isPlaying: false, currentTrack: null, positionMs: 0 });
+
+  listen('player-sync', (event) => {
+    playerState = event.payload;
+  });
+
+  async function togglePlay() {
+    await invoke('cmd_toggle_playback');
+  }
+
+  async function nextTrack() {
+    await invoke('cmd_queue_next');
+  }
+</script>`
           }
         }
       ]

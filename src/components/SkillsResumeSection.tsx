@@ -1,10 +1,12 @@
 import React from 'react';
-import { Download, Github, Linkedin, Code2, ArrowUpRight } from 'lucide-react';
+import { Download, Github, Linkedin, Code2, ArrowUpRight, Terminal } from 'lucide-react';
 import {
   DOSSIER_PROFILE_LINKS,
   DOSSIER_CATEGORIES,
+  DEVELOPER_TOOLING,
   RESUME_FILE_PATH,
 } from '../data/skills_manifest';
+import { ToolIcon } from './ToolIcon';
 
 export const SkillsResumeSection: React.FC = () => {
   const getPlatformIcon = (type: string) => {
@@ -55,7 +57,9 @@ export const SkillsResumeSection: React.FC = () => {
         <div>
           <a
             href={RESUME_FILE_PATH}
-            download="Ritwik_Gupta_Resume.pdf"
+            download={RESUME_FILE_PATH.startsWith('http') ? undefined : 'Ritwik_Gupta_Resume.pdf'}
+            target={RESUME_FILE_PATH.startsWith('http') ? '_blank' : undefined}
+            rel={RESUME_FILE_PATH.startsWith('http') ? 'noopener noreferrer' : undefined}
             className="inline-flex items-center gap-2 px-4 py-2 bg-[#C59458] hover:bg-[#A27339] text-[#121214] text-xs font-mono font-semibold rounded border border-white/10 transition-colors duration-200 cursor-pointer shrink-0 group"
           >
             <span>Download CV</span>
@@ -64,9 +68,9 @@ export const SkillsResumeSection: React.FC = () => {
         </div>
       </div>
 
-      {/* 3. The 4-Column Architectural Spec Grid */}
-      <div className="border-b border-white/10 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+      {/* 3. The 6-Category Architectural Spec Grid */}
+      <div className="py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12">
           {DOSSIER_CATEGORIES.map((category) => (
             <div key={category.title} className="space-y-4">
               {/* Category Header */}
@@ -87,6 +91,52 @@ export const SkillsResumeSection: React.FC = () => {
               </ul>
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* 4. Architectural Shelf: Developer Tooling & Workflow (Quiet Luxury Stream) */}
+      <div className="border-t border-white/5 border-b border-white/10 py-6">
+        {/* Header Eyebrow */}
+        <div className="flex items-center justify-between gap-4 mb-4">
+          <div className="flex items-center gap-1.5 font-mono text-xs tracking-[0.2em] uppercase font-semibold text-[#B58E62]">
+            <span>&gt;_</span>
+            <span>DEVELOPER TOOLING &amp; WORKFLOW</span>
+          </div>
+        </div>
+
+        {/* Masked Marquee Conveyor with Muted Monochromatic Stream & Subtle Hover Illumination */}
+        <div className="relative overflow-hidden w-full mask-marquee-edges group py-2">
+          <div className="animate-marquee-belt flex items-center">
+            {/* Track Loop 1 */}
+            {DEVELOPER_TOOLING.map((tool, idx) => (
+              <div key={`tool-1-${idx}`} className="inline-flex items-center shrink-0">
+                <div className="inline-flex items-center gap-3 cursor-default shrink-0 group/item transition-colors duration-300 ease-out">
+                  <span className="text-zinc-500 opacity-60 group-hover/item:opacity-100 group-hover/item:text-[#B58E62] transition-all duration-300 ease-out shrink-0 flex items-center justify-center">
+                    <ToolIcon id={tool.iconId} className="w-5 h-5" />
+                  </span>
+                  <span className="font-sans font-medium text-sm sm:text-base tracking-normal text-zinc-500 group-hover/item:text-[#EAEAEA] transition-colors duration-300 ease-out whitespace-nowrap">
+                    {tool.name}
+                  </span>
+                </div>
+                <span className="mx-6 sm:mx-8 text-white/[0.08] select-none font-mono text-xs">•</span>
+              </div>
+            ))}
+
+            {/* Track Loop 2 for continuous seamless loop */}
+            {DEVELOPER_TOOLING.map((tool, idx) => (
+              <div key={`tool-2-${idx}`} className="inline-flex items-center shrink-0">
+                <div className="inline-flex items-center gap-3 cursor-default shrink-0 group/item transition-colors duration-300 ease-out">
+                  <span className="text-zinc-500 opacity-60 group-hover/item:opacity-100 group-hover/item:text-[#B58E62] transition-all duration-300 ease-out shrink-0 flex items-center justify-center">
+                    <ToolIcon id={tool.iconId} className="w-5 h-5" />
+                  </span>
+                  <span className="font-sans font-medium text-sm sm:text-base tracking-normal text-zinc-500 group-hover/item:text-[#EAEAEA] transition-colors duration-300 ease-out whitespace-nowrap">
+                    {tool.name}
+                  </span>
+                </div>
+                <span className="mx-6 sm:mx-8 text-white/[0.08] select-none font-mono text-xs">•</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

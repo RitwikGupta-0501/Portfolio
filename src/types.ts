@@ -25,7 +25,7 @@ export interface ArchLayer {
   id: string;
   name: string;
   subtitle: string;
-  category: 'Ingress' | 'Compute' | 'Transport' | 'Consensus' | 'Storage' | 'Kernel' | 'Security';
+  category: 'Ingress' | 'Compute' | 'Transport' | 'Consensus' | 'Storage' | 'Kernel' | 'Security' | 'Playback' | 'State' | 'Persistence' | 'Extensions' | 'Interface' | string;
   color: string; // e.g. '#00E5FF'
   description: string;
   architectureRationale: string;
@@ -34,12 +34,12 @@ export interface ArchLayer {
   throughput: string;
   memoryFootprint: string;
   protocols: string[];
-  codeSnippet: {
+  codeSnippet?: {
     language: string;
     filename: string;
     code: string;
   };
-  metrics: {
+  metrics?: {
     label: string;
     value: string;
   }[];

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Project } from '../types';
 import { Send, Menu, X, ArrowUpRight } from 'lucide-react';
 import { scrollToTop } from '../utils/smoothScroll';
+import { PROFILE_MANIFEST } from '../data/profile_manifest';
 
 interface HeaderNavProps {
   projects: Project[];
@@ -76,7 +77,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
             onClick={() => scrollToTop(650)}
             className="font-serif-display font-medium text-xl sm:text-2xl text-[#EAEAEA] hover:text-white transition-opacity tracking-tight cursor-pointer text-left"
           >
-            Ritwik Gupta
+            {PROFILE_MANIFEST.name}
           </button>
         </div>
 

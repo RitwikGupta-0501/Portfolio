@@ -163,28 +163,28 @@ export const ProjectDrawer: React.FC<ProjectDrawerProps> = ({
           </div>
 
           {/* Benchmark Metrics - Clean Minimal Typography & Unified Colors */}
-          <div className="grid grid-cols-3 gap-6 sm:gap-10 pb-8 border-b border-white/[0.06]">
-            <div className="space-y-1">
-              <span className="text-xs font-sans text-gray-400 uppercase tracking-widest block font-medium">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 pb-8 border-b border-white/[0.06]">
+            <div className="min-w-0 space-y-1">
+              <span className="text-[11px] sm:text-xs font-sans text-gray-400 uppercase tracking-widest block font-medium">
                 Latency Profile
               </span>
-              <span className="text-lg sm:text-xl font-mono font-semibold text-[#EAEAEA] block whitespace-nowrap">
+              <span className="text-base sm:text-lg lg:text-xl font-mono font-semibold text-[#EAEAEA] block leading-snug break-words">
                 {renderedProject.metrics.latency}
               </span>
             </div>
-            <div className="space-y-1">
-              <span className="text-xs font-sans text-gray-400 uppercase tracking-widest block font-medium">
+            <div className="min-w-0 space-y-1">
+              <span className="text-[11px] sm:text-xs font-sans text-gray-400 uppercase tracking-widest block font-medium">
                 Throughput Peak
               </span>
-              <span className="text-lg sm:text-xl font-mono font-semibold text-[#EAEAEA] block whitespace-nowrap">
+              <span className="text-base sm:text-lg lg:text-xl font-mono font-semibold text-[#EAEAEA] block leading-snug break-words">
                 {renderedProject.metrics.throughput}
               </span>
             </div>
-            <div className="space-y-1">
-              <span className="text-xs font-sans text-gray-400 uppercase tracking-widest block font-medium">
+            <div className="min-w-0 space-y-1">
+              <span className="text-[11px] sm:text-xs font-sans text-gray-400 uppercase tracking-widest block font-medium">
                 Memory Footprint
               </span>
-              <span className="text-lg sm:text-xl font-mono font-semibold text-[#EAEAEA] block whitespace-nowrap">
+              <span className="text-base sm:text-lg lg:text-xl font-mono font-semibold text-[#EAEAEA] block leading-snug break-words">
                 {renderedProject.metrics.memory}
               </span>
             </div>

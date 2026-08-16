@@ -1,3 +1,5 @@
+import { PROFILE_MANIFEST, SOCIAL_LINKS } from './profile_manifest';
+
 export interface SkillDossierCategory {
   title: string;
   items: string[];
@@ -9,64 +11,86 @@ export interface ProfileLink {
   iconType: 'github' | 'linkedin' | 'leetcode';
 }
 
-export const DOSSIER_PROFILE_LINKS: ProfileLink[] = [
-  {
-    label: 'GitHub',
-    url: 'https://github.com/RitwikGupta-0501',
-    iconType: 'github',
-  },
-  {
-    label: 'LinkedIn',
-    url: 'https://linkedin.com/in/ritwikg',
-    iconType: 'linkedin',
-  },
-  {
-    label: 'LeetCode',
-    url: 'https://leetcode.com/u/RitwikGupta-0501/',
-    iconType: 'leetcode',
-  },
-];
+export const DOSSIER_PROFILE_LINKS: ProfileLink[] = SOCIAL_LINKS;
 
 export const DOSSIER_CATEGORIES: SkillDossierCategory[] = [
   {
-    title: 'LANGUAGES & RUNTIMES',
+    title: 'LANGUAGES',
     items: [
-      'Python (FastAPI / Django)',
+      'Python',
+      'C++ (CUDA)',
+      'Rust',
       'Go',
-      'C++',
-      'TypeScript / Node',
-      'Bash',
+      'TypeScript',
+      'SQL & Bash',
     ],
   },
   {
-    title: 'SYSTEMS & INFRA',
+    title: 'AI & AGENTS',
     items: [
-      'Linux / POSIX',
-      'Docker & Containerd',
-      'Kubernetes',
-      'Redis / PostgreSQL',
-      'Git (Workflows)',
+      'LangGraph',
+      'OpenAI / Anthropic APIs',
     ],
   },
   {
-    title: 'AI & AGENT SYSTEMS',
+    title: 'BACKEND',
     items: [
-      'Model Context Protocol (MCP)',
-      'vLLM / Ollama',
-      'pgvector',
-      'LangChain / LlamaIndex',
+      'FastAPI & Pydantic',
+      'SQLAlchemy',
+      'Django',
+      'Tauri',
     ],
   },
   {
-    title: 'ENVIRONMENT & TOOLING',
+    title: 'DATABASES',
     items: [
-      'Neovim / VS Code',
-      'Linux CLI / Bash',
-      'GDB / LLDB',
-      'Postman',
-      'PyTest / CI Pipelines',
+      'PostgreSQL',
+      'Redis',
+      'SQLite',
+      'MongoDB',
+    ],
+  },
+  {
+    title: 'CLOUD & DEVOPS',
+    items: [
+      'Kubernetes & Docker',
+      'AWS / GCP',
+      'GitHub Actions',
+      'Elasticsearch',
+    ],
+  },
+  {
+    title: 'SYSTEMS & CONCURRENCY',
+    items: [
+      'Linux (Namespaces, cgroups, systemd)',
+      'OpenMP & OpenMPI',
+      'CUDA Programming',
     ],
   },
 ];
 
-export const RESUME_FILE_PATH = '/Ritwik_Gupta_Resume.pdf';
+export interface DeveloperToolingItem {
+  name: string;
+  category?: string;
+  iconId: string;
+}
+
+export const DEVELOPER_TOOLING: DeveloperToolingItem[] = [
+  { name: 'Claude Code', category: 'Agentic', iconId: 'claude' },
+  { name: 'Antigravity', category: 'AI IDE', iconId: 'antigravity' },
+  { name: 'Neovim', category: 'Editor', iconId: 'neovim' },
+  { name: 'Zed', category: 'Editor', iconId: 'zed' },
+  { name: 'VS Code', category: 'Editor', iconId: 'vscode' },
+  { name: 'Ghostty', category: 'Terminal', iconId: 'ghostty' },
+  { name: 'Linux', category: 'Kernel & OS', iconId: 'linux' },
+  { name: 'Hyprland', category: 'Compositor', iconId: 'hyprland' },
+  { name: 'Obsidian', category: 'Knowledge', iconId: 'obsidian' },
+  { name: 'CUDA / NVIDIA', category: 'GPU Architecture', iconId: 'cuda' },
+  { name: 'Valgrind', category: 'Diagnostics', iconId: 'valgrind' },
+  { name: 'Docker Compose', category: 'Containers', iconId: 'docker' },
+  { name: 'Postman', category: 'API', iconId: 'postman' },
+  { name: 'pytest', category: 'Testing', iconId: 'pytest' },
+  { name: 'Git & GitHub Actions', category: 'VCS & CI', iconId: 'git' },
+];
+
+export const RESUME_FILE_PATH = PROFILE_MANIFEST.resumeUrl;

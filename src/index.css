@@ -182,11 +182,19 @@
 .animate-marquee-belt {
   display: flex;
   width: max-content;
-  animation: marquee-belt 35s linear infinite;
+  will-change: transform;
+  animation: marquee-belt 30s linear infinite;
 }
 
-.animate-marquee-belt:hover {
+.animate-marquee-belt:hover,
+.group:hover .animate-marquee-belt {
   animation-play-state: paused;
+}
+
+/* Precision horizontal alpha gradient edge masks for ribbon */
+.mask-marquee-edges {
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
 }
 
 /* Glassmorphic Drawer Slide-in Animation */

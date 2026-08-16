@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Mail, Check } from 'lucide-react';
+import { PROFILE_MANIFEST } from '../data/profile_manifest';
 
 export const ContactSection: React.FC = () => {
   const [copied, setCopied] = useState(false);
-  const emailAddress = 'ritwikg.205@gmail.com';
+  const emailAddress = PROFILE_MANIFEST.email;
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(emailAddress);

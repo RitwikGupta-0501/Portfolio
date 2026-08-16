@@ -7,8 +7,9 @@ import { ExecutionLog } from './components/ExecutionLog';
 import { SkillsResumeSection } from './components/SkillsResumeSection';
 import { ContactSection } from './components/ContactSection';
 import { PROJECTS_DATA } from './data/projectsData';
+import { PROFILE_MANIFEST } from './data/profile_manifest';
 import { Project } from './types';
-import { ArrowDown, Github, Mail, FileText } from 'lucide-react';
+import { ArrowDown, Github, Mail, Linkedin } from 'lucide-react';
 import { navigateToSection, scrollToTop } from './utils/smoothScroll';
 
 export default function App() {
@@ -73,17 +74,17 @@ export default function App() {
       <section className="relative min-h-[calc(100vh-4rem)] sm:min-h-[calc(100vh-5rem)] px-6 sm:px-8 max-w-4xl mx-auto flex flex-col justify-center items-start text-left py-12 sm:py-16">
         {/* The Eyebrow: Purely typographic, all-caps, wide letter spacing, bronze/brass accent (#C59458) */}
         <div className="text-xs font-sans uppercase font-medium tracking-[0.2em] text-[#C59458] mb-6">
-          OPEN TO 6-MONTH INTERNSHIPS &amp; FULL-TIME • 2027
+          {PROFILE_MANIFEST.availability}
         </div>
 
         {/* The Name Anchor: Serif Display */}
         <h1 className="font-serif-display text-5xl sm:text-7xl md:text-8xl font-normal text-[#EAEAEA] tracking-tight leading-[1.05] mb-4">
-          Ritwik Gupta
+          {PROFILE_MANIFEST.name}
         </h1>
 
         {/* The Role Indicator: Single clean line separated by interpuncts */}
         <div className="text-base sm:text-lg md:text-xl font-sans font-normal text-[#EAEAEA]/80 tracking-wide mb-8">
-          Backend Software Engineer • Distributed Systems
+          {PROFILE_MANIFEST.tagline}
         </div>
 
         {/* The Introduction: Generous Line-Height & Muted Slate Balance */}
@@ -102,34 +103,54 @@ export default function App() {
           </button>
 
           <div className="flex items-center gap-2">
-            <a
-              href="https://github.com/RitwikGupta-0501"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-icon"
-              aria-label="GitHub Profile"
-              title="GitHub Profile"
-            >
-              <Github className="w-4 h-4" />
-            </a>
+            {/* GitHub */}
+            <div className="relative group/tooltip">
+              <a
+                href={PROFILE_MANIFEST.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-icon"
+                aria-label="GitHub Profile"
+              >
+                <Github className="w-4 h-4" />
+              </a>
+              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-2.5 py-1 bg-[#1C1C20] border border-white/10 rounded-md shadow-xl shadow-black/50 text-[11px] font-mono text-[#EAEAEA] whitespace-nowrap opacity-0 scale-95 group-hover/tooltip:opacity-100 group-hover/tooltip:scale-100 transition-all duration-200 delay-300 pointer-events-none z-30 flex items-center">
+                <span>GitHub Profile</span>
+                <span className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 rotate-45 bg-[#1C1C20] border-t border-l border-white/10" />
+              </div>
+            </div>
 
-            <a
-              href="mailto:ritwikg.205@gmail.com"
-              className="btn-icon"
-              aria-label="Send Email"
-              title="Send Email"
-            >
-              <Mail className="w-4 h-4" />
-            </a>
+            {/* Email */}
+            <div className="relative group/tooltip">
+              <a
+                href={`mailto:${PROFILE_MANIFEST.email}`}
+                className="btn-icon"
+                aria-label="Send Email"
+              >
+                <Mail className="w-4 h-4" />
+              </a>
+              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-2.5 py-1 bg-[#1C1C20] border border-white/10 rounded-md shadow-xl shadow-black/50 text-[11px] font-mono text-[#EAEAEA] whitespace-nowrap opacity-0 scale-95 group-hover/tooltip:opacity-100 group-hover/tooltip:scale-100 transition-all duration-200 delay-300 pointer-events-none z-30 flex items-center">
+                <span>Send Email</span>
+                <span className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 rotate-45 bg-[#1C1C20] border-t border-l border-white/10" />
+              </div>
+            </div>
 
-            <button
-              onClick={() => handleNavigateSection('profile-skills-resume')}
-              className="btn-icon"
-              aria-label="View Resume & Skills"
-              title="View Resume & Skills"
-            >
-              <FileText className="w-4 h-4" />
-            </button>
+            {/* LinkedIn */}
+            <div className="relative group/tooltip">
+              <a
+                href={PROFILE_MANIFEST.linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-icon"
+                aria-label="LinkedIn Profile"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
+              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-2.5 py-1 bg-[#1C1C20] border border-white/10 rounded-md shadow-xl shadow-black/50 text-[11px] font-mono text-[#EAEAEA] whitespace-nowrap opacity-0 scale-95 group-hover/tooltip:opacity-100 group-hover/tooltip:scale-100 transition-all duration-200 delay-300 pointer-events-none z-30 flex items-center">
+                <span>LinkedIn Profile</span>
+                <span className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 rotate-45 bg-[#1C1C20] border-t border-l border-white/10" />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -156,11 +177,11 @@ export default function App() {
       <footer className="border-t border-white/[0.06] py-10 px-6 sm:px-12 text-xs font-mono text-gray-500 bg-[#141417]">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
-            &copy; {new Date().getFullYear()} Ritwik Gupta • Backend Systems &amp; Distributed Architecture
+            &copy; {new Date().getFullYear()} {PROFILE_MANIFEST.name} • Backend Systems &amp; Distributed Architecture
           </div>
           <div className="flex items-center gap-5 sm:gap-6">
             <a
-              href="https://github.com/ritwikg205"
+              href={PROFILE_MANIFEST.githubUrl}
               target="_blank"
               rel="noreferrer"
               className="hover:text-[#EAEAEA] transition-colors"
@@ -169,7 +190,7 @@ export default function App() {
             </a>
             <span>•</span>
             <a
-              href="https://www.linkedin.com/in/ritwikg205"
+              href={PROFILE_MANIFEST.linkedinUrl}
               target="_blank"
               rel="noreferrer"
               className="hover:text-[#EAEAEA] transition-colors"
@@ -178,7 +199,7 @@ export default function App() {
             </a>
             <span>•</span>
             <a
-              href="https://leetcode.com/u/ritwik_gupta/"
+              href={PROFILE_MANIFEST.leetcodeUrl}
               target="_blank"
               rel="noreferrer"
               className="hover:text-[#EAEAEA] transition-colors"

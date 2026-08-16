@@ -6,48 +6,48 @@ export interface ExperienceManifestConfig {
 }
 
 export const EXPERIENCE_MANIFEST: ExperienceManifestConfig = {
-  totalSummary: 'TOTAL EXPERIENCE: 7+ YEARS IN SYSTEMS & BACKEND ARCHITECTURE',
+  totalSummary: 'INTERNSHIP, FREELANCE & OPEN SOURCE CONTRIBUTIONS',
   items: [
     {
       id: 'exp-1',
-      period: '2023 — PRESENT',
-      role: 'Principal Systems & Infrastructure Architect',
-      company: 'Apex High-Frequency Systems',
-      type: 'Full-time',
-      description: 'Architecting ultra-low latency distributed trading engines, custom Linux container execution runtimes, and GPU acceleration kernels.',
+      period: 'JUNE 2026 — AUGUST 2026',
+      role: 'Full Stack Engineer Intern',
+      company: 'Tredence Inc. • Bengaluru, India',
+      type: 'Internship',
+      description: 'Engineered high-performance caching layers, multi-tier agentic memory graphs, and automated optimization engines for multi-node LLM agent architectures.',
       achievements: [
-        'Engineered WarpKV key-value store reducing p99 lookup latency from 1.2ms to 0.18ms via CUDA & PCIe DMA offloading.',
-        'Designed kernel-bypass DPDK networking pipeline handling 8.5M trades/sec with sub-microsecond tick latency.',
-        'Led infrastructure team migrating 450+ microservices to custom bare-metal eBPF Kubernetes nodes.'
+        'Reduced database write-amplification by 90% and eliminated MVCC bloat by designing a 7-module caching service (Redis/PostgreSQL) with an O(1) ZSET eviction index, replacing O(N) full-table scans.',
+        'Achieved state-of-the-art recall with an 83 score on longmemeval by developing a 4-tier agentic memory service (Working, Episodic, Semantic, Procedural) utilizing single and multi-hop knowledge graphs.',
+        'Cut compute costs for agent-optimization workflows by ~90% (reducing evaluation calls from 2500 to ~500) by building an Auto-tune optimizer for multi-node LangGraph agents utilizing DSPy and a successive-halving tournament algorithm.',
+        'Prevented silent tool-calling failures across agent retry pipelines by uncovering and patching a critical LangGraph bug where model parameters were dropped after executing .bind_tools().'
       ],
-      skills: ['C++20', 'CUDA', 'Rust', 'eBPF', 'DPDK', 'Distributed Systems', 'Linux Kernel']
+      skills: ['Redis', 'PostgreSQL', 'LangGraph', 'DSPy', 'Knowledge Graphs', 'Python', 'Agentic Memory', 'FastAPI']
     },
     {
       id: 'exp-2',
-      period: '2020 — 2023',
-      role: 'Senior Backend Systems Engineer',
-      company: 'ScaleCloud Infrastructure Inc.',
-      type: 'Full-time',
-      description: 'Built distributed storage engines, Raft consensus consensus modules, and container orchestration operators.',
+      period: 'NOV 2025 — MARCH 2026',
+      role: 'Freelance Software Engineer',
+      company: 'Global Technologies • Remote, India',
+      type: 'Freelance',
+      description: 'Designed and deployed scalable RESTful APIs and CI/CD pipelines, performing database query plan optimizations and observability instrumentation.',
       achievements: [
-        'Built custom Go/Rust Kubernetes operator for rootless micro-container sandboxes with sub-10ms boot times.',
-        'Reduced memory footprint per node by 65% through custom jemalloc page allocators and SkipList memory arenas.',
-        'Automated zero-downtime database snapshot synchronization across multi-region cloud deployment clusters.'
+        'Designed and built RESTful APIs using Django Ninja, and configured CI/CD pipelines to automate testing and frontend deployment.',
+        'Optimized PostgreSQL performance via query plan analysis and custom indexing, resolving N + 1 query issues; added a pytest suite with structured logging for observability.'
       ],
-      skills: ['Go', 'Rust', 'Kubernetes CRD', 'Raft Consensus', 'RocksDB', 'gRPC']
+      skills: ['Django Ninja', 'PostgreSQL', 'Query Optimization', 'CI/CD Pipelines', 'pytest', 'Python', 'Docker']
     },
     {
       id: 'exp-3',
-      period: '2017 — 2020',
-      role: 'Infrastructure & Software Engineer',
-      company: 'DataStream Platform Systems',
-      type: 'Full-time',
-      description: 'Focused on high-throughput event processing pipelines, memory-mapped I/O, and Linux socket tuning.',
+      period: 'FEB 2026 — PRESENT',
+      role: 'Open Source Contributor',
+      company: 'Zulip • Remote',
+      type: 'Open Source',
+      description: 'Contributing to server-side reliability, core authentication workflows, and distributed messaging logic in Python.',
       achievements: [
-        'Optimized TCP memory socket buffers and epoll event loops for 500,000+ concurrent WebSocket streaming clients.',
-        'Built automated CI/CD pipeline and integration benchmark suite measuring kernel syscall overhead.'
+        'Resolved critical cross-platform authentication bugs and patched server-side issues within a massive, high-concurrency Python distributed messaging platform.',
+        'Enforced clean git hygiene — squashing commits pre-merge and applying clear branch/commit conventions — to meet Zulip’s contribution standards.'
       ],
-      skills: ['C++', 'Linux Systems', 'Socket Programming', 'Docker', 'Python']
+      skills: ['Python', 'Distributed Messaging', 'Django', 'Authentication', 'Git Hygiene', 'Open Source']
     }
   ]
 };
