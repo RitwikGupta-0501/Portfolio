@@ -1,6 +1,6 @@
 {
   "name": "3D Architecture Portfolio",
-  "description": "Interactive 3D portfolio featuring exploded architectural layers, WebGL layer inspection, data flow simulation, and responsive mobile views.",
+  "description": "Portfolio of Ritwik Gupta — Systems & Backend Software Engineer featuring interactive 3D exploded architectural layer inspections, distributed systems highlights, and execution logs.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
