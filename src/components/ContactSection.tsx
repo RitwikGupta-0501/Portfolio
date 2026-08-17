@@ -10,6 +10,10 @@ export const ContactSection: React.FC = () => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const emailAddress = PROFILE_MANIFEST.email;
+  const web3FormsAccessKey =
+    import.meta.env.VITE_WEB3FORMS_ACCESS_KEY ||
+    import.meta.env.VITE_WEB3FORMS_KEY ||
+    '';
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(emailAddress);
@@ -21,35 +25,49 @@ export const ContactSection: React.FC = () => {
     e.preventDefault();
     if (!email.trim() || !message.trim()) return;
 
+    if (!web3FormsAccessKey) {
+      setStatus('error');
+      setErrorMessage(
+        'Web3Forms access key is not configured in VITE_WEB3FORMS_ACCESS_KEY. You can dispatch directly via your email client below.'
+      );
+      return;
+    }
+
     setStatus('submitting');
     setErrorMessage('');
 
     try {
-      const response = await fetch(`https://formsubmit.co/ajax/${emailAddress}`, {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
         },
         body: JSON.stringify({
-          _subject: `New Dispatch from ${email}`,
+          access_key: web3FormsAccessKey,
           email: email,
+          name: email.split('@')[0] || 'Portfolio Visitor',
+          subject: `New Portfolio Dispatch from ${email}`,
           message: message,
-          _template: 'box',
+          from_name: 'Portfolio Contact Form',
         }),
       });
 
-      if (response.ok) {
+      const data = await response.json();
+
+      if (data.success) {
         setStatus('success');
         setEmail('');
         setMessage('');
       } else {
-        throw new Error('Submission failed');
+        throw new Error(data.message || 'Submission failed');
       }
-    } catch (err) {
-      console.error('Email submission error:', err);
+    } catch (err: any) {
+      console.error('Web3Forms submission error:', err);
       setStatus('error');
-      setErrorMessage('Direct transmission interrupted. You can dispatch via your local email client below.');
+      setErrorMessage(
+        err?.message || 'Direct transmission interrupted. You can dispatch via your local email client below.'
+      );
     }
   };
 
@@ -85,7 +103,7 @@ export const ContactSection: React.FC = () => {
             </div>
             <h3 className="text-xl font-serif-display text-[#EAEAEA] tracking-tight">Dispatch Transmitted</h3>
             <p className="text-sm text-gray-400 max-w-sm mx-auto font-sans font-light">
-              Your message was routed directly to <span className="font-mono text-xs text-[#B58E62]">{emailAddress}</span>. I will review and reply shortly.
+              Your message was transmitted directly to <span className="font-mono text-xs text-[#B58E62]">{emailAddress}</span> via Web3Forms. I will review and reply shortly.
             </p>
             <button
               onClick={() => setStatus('idle')}
@@ -136,7 +154,7 @@ export const ContactSection: React.FC = () => {
               />
             </div>
 
-            {/* Inline Error Notice if Network Fails */}
+            {/* Inline Error Notice if Network Fails or Key Missing */}
             {status === 'error' && (
               <div className="mb-8 p-3.5 bg-red-950/20 border border-red-500/20 rounded text-xs text-red-300 flex items-start gap-2.5">
                 <AlertCircle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
